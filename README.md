@@ -1,2 +1,2 @@
 # vue_project
-My vue project
+My vue project following bilibili
