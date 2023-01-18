@@ -1,4 +1,4 @@
-# my_vue
+# my_vue project
 
 ## Project setup
 ```
