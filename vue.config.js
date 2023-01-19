@@ -12,7 +12,7 @@ function resolve(dir) {
 }
 const webpack = require('webpack')
 module.exports = {
-  configureWebpack: config =>{
+  configureWebpack: config => {
     config.plugins.push(AutoImport({
       resolvers: [ElementPlusResolver()],
     }))
@@ -81,4 +81,15 @@ module.exports = {
       }
     }
   },
+  css: {
+    loaderOptions: {
+      sass: {
+        additionalData:
+          `
+          @import "@/styles/variables.scss";  // scss文件地址
+          @import "@/styles/mixin.scss";     // scss文件地址
+        `
+      }
+    }
+  }
 }
