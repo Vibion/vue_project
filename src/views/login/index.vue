@@ -1,35 +1,69 @@
 <template>
   <div class="login-container">
-    <el-form :model="form" class="login-form" ref="formRef">
+    <el-form :model="form" class="login-form" ref="formRef" :rules="rules">
       <div class="title-container">
         <h3 class="title">用户登录</h3>
       </div>
-      <el-form-item>
+      <el-form-item prop="username">
         <!-- <el-icon :size="20" class="svg-container">
                     <Edit />
                 </el-icon> -->
         <svg-icon icon="user" class="svg-container"></svg-icon>
-        <el-input v-model="form.name"></el-input>
+        <el-input v-model="form.username"></el-input>
       </el-form-item>
-      <el-form-item>
+      <el-form-item prop="password">
         <!-- <el-icon :size="20" class="svg-container">
                     <Edit />
                 </el-icon> -->
         <svg-icon icon="password" class="svg-container"></svg-icon>
-        <el-input v-model="form.password" />
+        <el-input v-model="form.password" :type="passwordType" />
+        <svg-icon :icon="passwordType === 'password' ? 'eye' : 'eye-open'" @click="changeType"></svg-icon>
       </el-form-item>
-      <el-button type="primary" class="login-button">登录</el-button>
+      <el-button type="primary" class="login-button" @click="handleLogin">登录</el-button>
     </el-form>
   </div>
 </template>
 
 <script setup>
 import { ref } from 'vue'
+import { login } from '@/api/login'
 // import { Edit } from '@element-plus/icons-vue'
 const form = ref({
-  name: '',
+  username: '',
   password: ''
 })
+
+const rules = ref({
+  username: [
+    { required: true, message: 'Please input Activity name', trigger: 'blur' },
+    // { min: 3, max: 5, message: 'Length should be 3 to 5', trigger: 'blur' },
+  ],
+  password: [
+    { required: true, message: 'Please input Activity password', trigger: 'blur' },
+    // { min: 3, max: 5, message: 'Length should be 3 to 5', trigger: 'blur' },
+  ]
+})
+const formRef = ref(null)
+const handleLogin = () => {
+  formRef.value.validate(async (valid) => {
+    if (valid) {
+      // alert('submit')
+      const res = await login(form.value)
+      console.log(res)
+    } else {
+      console.log('error submit')
+      return false
+    }
+  })
+}
+const passwordType = ref('password')
+const changeType = () => {
+  if (passwordType.value === 'password') {
+    passwordType.value = 'text'
+  } else {
+    passwordType.value = 'password'
+  }
+}
 </script>
 
 <style lang="scss" scoped>
@@ -52,7 +86,7 @@ $cursor: #fff;
     margin: 0 auto;
     overflow: hidden;
 
-    :deep(.el-form-item){
+    :deep(.el-form-item) {
       border: 1px solid rgba(255, 255, 255, 0.1);
       background: rgba(0, 0, 0, 0.1);
       border-radius: 5px;
