@@ -53,7 +53,7 @@ const handleLogin = () => {
       // alert('submit')
       // const res = await login(form.value)
       // console.log(res)
-      store.dispatch('app/login',form.value)
+      store.dispatch('app/login', form.value)
     } else {
       console.log('error submit')
       return false
@@ -79,8 +79,12 @@ $cursor: #fff;
 .login-container {
   min-height: 100%;
   width: 100%;
-  background-color: $bg;
+  // background-color: $bg;
   overflow: hidden;
+  background-color: #8EC5FC;
+  background-image: linear-gradient(62deg, #8EC5FC 0%, #E0C3FC 100%);
+
+
 
   .login-form {
     position: relative;

@@ -86,8 +86,8 @@ module.exports = {
       sass: {
         additionalData:
           `
-          @import "@/styles/variables.scss";  // scss文件地址
-          @import "@/styles/mixin.scss";     // scss文件地址
+          @import "@/styles/variables.module.scss";  // scss文件地址
+          @import "@/styles/mixin.module.scss";     // scss文件地址
         `
       }
     }
