@@ -16,4 +16,4 @@ yarn build
 ```
 
 ### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+Please see [Configuration Reference](https://cli.vuejs.org/config/).
