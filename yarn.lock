@@ -2802,7 +2802,7 @@
   "resolved" "https://registry.npmmirror.com/csstype/-/csstype-2.6.21.tgz"
   "version" "2.6.21"
 
-"dayjs@^1.10.7":
+"dayjs@^1.10.7", "dayjs@^1.11.7":
   "integrity" "sha512-+Yw9U6YO5TQohxLcIkrXBeY73WP3ejHWVvx8XCk3gxvQDCTEmS48ZrSZCKciI7Bhl/uCMyxYtE9UqRILmFphkQ=="
   "resolved" "https://registry.npmmirror.com/dayjs/-/dayjs-1.11.7.tgz"
   "version" "1.11.7"
