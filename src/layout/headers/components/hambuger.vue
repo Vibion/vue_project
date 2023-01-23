@@ -1,5 +1,5 @@
 <template>
-    <div class="hamburger-container">
+    <div class="hamburger-container" id="hamburger">
         <svg-icon :icon="icon" @click="changeSide"></svg-icon>
     </div>
 </template>

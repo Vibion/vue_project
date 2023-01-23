@@ -1,6 +1,6 @@
 import { login as loginApi } from '@/api/login'
 import router from '@/router'
-import {setTokenTime} from '@/utils/auth'
+import { setTokenTime } from '@/utils/auth'
 
 export default {
     namespaced: true,
@@ -8,15 +8,19 @@ export default {
         // 先取token
         token: localStorage.getItem('token') || '',
         // 点击hamburgur列表会进行伸缩
-        sideType: true
+        sideType: true,
+        lang: localStorage.getItem('lang') || 'zh'
     }),
     mutations: {
         setToken(state, token) {
             state.token = token
             localStorage.setItem('token', token)
         },
-        changeSide(state){
+        changeSide(state) {
             state.sideType = !state.sideType
+        },
+        changLang(state, lang) {
+            state.lang = lang
         }
     },
     actions: {
@@ -37,6 +41,7 @@ export default {
         logout({ commit }) {
             commit('setToken', '')
             localStorage.clear()
+            sessionStorage.clear()
             router.replace('/login')
         }
     }
